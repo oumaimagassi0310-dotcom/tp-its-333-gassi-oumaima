@@ -23,7 +23,6 @@ app = Flask(__name__)
 @app.route('/api/utilisateurs', methods=['POST'])
 def utilisateurs():
     data = request.get_json()
-
     if not data or 'nom' not in data:
         return jsonify({"error": "Le champ 'nom' est requis"}), 400
 
