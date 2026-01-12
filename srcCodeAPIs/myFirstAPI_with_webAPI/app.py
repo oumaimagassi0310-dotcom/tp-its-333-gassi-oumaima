@@ -13,9 +13,9 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 # EXO1: API GET
-#@app.route('/api/salutation', methods=['GET'])
-#def salutation():
-    #return jsonify({"message": "Hello World"})
+@app.route('/api/salutation', methods=['GET'])
+def salutation():
+    return jsonify({"message": "Hello World"})
 
 
 
@@ -23,7 +23,7 @@ app = Flask(__name__)
 @app.route('/api/utilisateurs', methods=['POST'])
 def utilisateurs():
     data = request.get_json()
-    
+
     if not data or 'nom' not in data:
         return jsonify({"error": "Le champ 'nom' est requis"}), 400
 
