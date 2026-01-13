@@ -2,6 +2,12 @@ from app import app
 from flask import render_template, request, jsonify
 
 ### EXO1 - simple API
+#@app.route('/api/salutation', methods=['GET'])
+#def salutation():
+    #return jsonify({"message": "Hello World"})
+
+
+### EXO2 - API with simple display
 #@app.route('/')
 #def index():
     #message = "Hello world"
@@ -11,16 +17,11 @@ from flask import render_template, request, jsonify
 #if __name__ == '__main__':
     #app.run(debug=True)
 
-
-
-### EXO2 - API with simple display
+### EXO3 - API with parameters display
 #@app.route('/')
 #def index():
     #user={'name':'Oumaima', 'surname':'gassi'}
-    #return render_template('index.html', title='MDM', utilisateur=user)
-
-### EXO3 - API with parameters display
- 
+    #return render_template('index.html', title='MDM', utilisateur=user) 
 
 ### EXO4 - API with parameters retrieved from URL 
 @app.route('/')
