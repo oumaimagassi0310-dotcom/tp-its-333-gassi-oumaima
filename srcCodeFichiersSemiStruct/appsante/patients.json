@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nom": "Mi",
+        "age": 45,
+        "poids": 82,
+        "taille": 1.78,
+        "frequence_cardiaque": 72
+    },
+    {
+        "id": 2,
+        "nom": "Ou",
+        "age": 30,
+        "poids": 62,
+        "taille": 1.65,
+        "frequence_cardiaque": 80
+    },
+    {
+        "id": 3,
+        "nom": "You",
+        "age": 52,
+        "poids": 90,
+        "taille": 1.80,
+        "frequence_cardiaque": 68
+    }
+]
