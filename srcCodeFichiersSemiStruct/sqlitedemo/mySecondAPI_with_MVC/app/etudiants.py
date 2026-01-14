@@ -1,10 +1,32 @@
 import sqlite3
 
-with sqlite3.connect("database.db") as con:
+DATABASE = "database.db"
+
+def create_table():
+    con = sqlite3.connect(DATABASE)
     cur = con.cursor()
-    cur.execute("INSERT INTO etudiants(nom,addr,pin) VALUES (?,?,?)", (" John Doe" ," 122 rue paul armangot" ," 123"))
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS etudiants (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nom TEXT NOT NULL,
+            addr TEXT,
+            pin TEXT
+        )
+    """)
     con.commit()
+    con.close()
+
+def insert_etudiant(nom, addr, pin):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("INSERT INTO etudiants(nom, addr, pin) VALUES (?, ?, ?)", (nom, addr, pin))
+    con.commit()
+    con.close()
+
+def get_etudiants():
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
     cur.execute("SELECT * FROM etudiants")
     rows = cur.fetchall()
-    print(rows)
-con.close()
+    con.close()
+    return rows

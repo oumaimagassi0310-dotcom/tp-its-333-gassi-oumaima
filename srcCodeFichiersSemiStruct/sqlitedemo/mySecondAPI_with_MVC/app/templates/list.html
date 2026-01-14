@@ -1,0 +1,27 @@
+<html>
+<body>
+<h2>Liste des étudiants</h2>
+
+<a href="/new">Ajouter un étudiant</a>
+<br><br>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Pincode</th>
+    </tr>
+
+    {% for e in etudiants %}
+    <tr>
+        <td>{{ e[0] }}</td>
+        <td>{{ e[1] }}</td>
+        <td>{{ e[2] }}</td>
+        <td>{{ e[3] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
