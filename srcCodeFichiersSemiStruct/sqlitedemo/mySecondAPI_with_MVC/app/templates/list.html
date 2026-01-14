@@ -15,10 +15,10 @@
 
     {% for e in etudiants %}
     <tr>
-        <td>{{ e[0] }}</td>
-        <td>{{ e[1] }}</td>
-        <td>{{ e[2] }}</td>
-        <td>{{ e[3] }}</td>
+        <td>{{ e.id }}</td>
+        <td>{{ e.nom }}</td>
+        <td>{{ e.addr }}</td>
+        <td>{{ e.pin }}</td>
     </tr>
     {% endfor %}
 </table>
