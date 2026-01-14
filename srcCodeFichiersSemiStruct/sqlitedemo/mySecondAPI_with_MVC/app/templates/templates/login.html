@@ -1,0 +1,38 @@
+<html>
+<body>
+<h3>Connexion</h3>
+
+<label>Username</label><br>
+<input type="text" id="username"><br>
+
+<label>Password</label><br>
+<input type="password" id="password"><br><br>
+
+<button onclick="login()">Se connecter</button>
+
+<script>
+async function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        // Sauvegarde le token dans localStorage
+        localStorage.setItem("token", data.access_token);
+        alert("Connexion réussie !");
+        window.location.href = "/new"; // redirige vers le formulaire
+    } else {
+        alert(data.msg);
+    }
+}
+</script>
+</body>
+</html>

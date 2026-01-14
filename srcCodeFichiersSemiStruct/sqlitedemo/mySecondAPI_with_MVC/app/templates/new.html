@@ -1,18 +1,54 @@
 <html>
 <body>
-<form action="/new" method="POST">
-    <h3>Nouveau étudiant</h3>
+<h3>Nouveau étudiant</h3>
 
-    Nom<br>
-    <input type="text" name="nom"><br>
+Nom<br>
+<input type="text" id="nom"><br>
 
-    Adresse<br>
-    <textarea name="addr"></textarea><br>
+Adresse<br>
+<textarea id="addr"></textarea><br>
 
-    PINCODE<br>
-    <input type="text" name="pin"><br><br>
+PINCODE<br>
+<input type="text" id="pin"><br><br>
 
-    <input type="submit" value="Envoyer">
-</form>
+<button onclick="submitStudent()">Envoyer</button>
+<br><br>
+<a href="/">Retour à la liste</a>
+
+<script>
+async function submitStudent() {
+    const nom = document.getElementById("nom").value;
+    const addr = document.getElementById("addr").value;
+    const pin = document.getElementById("pin").value;
+
+    // Récupère le token depuis localStorage
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("Vous devez vous connecter !");
+        window.location.href = "/login";
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("nom", nom);
+    formData.append("addr", addr);
+    formData.append("pin", pin);
+
+    const response = await fetch("/new", {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
+        body: formData
+    });
+
+    if (response.redirected) {
+        window.location.href = response.url;
+    } else {
+        const result = await response.json();
+        alert(JSON.stringify(result));
+    }
+}
+</script>
 </body>
 </html>
